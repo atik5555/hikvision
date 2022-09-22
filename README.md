@@ -74,6 +74,6 @@ use ffmpeg command to exicute bat file .
 add logo , text message in the video using this bat file . 
 this bat file also allows to rename the video and screenshot with timestamp , which can later be stored to database according to timestamp . 
 for example :
-ffmpeg -ss 00:00:20 -i book.mp4 -qscale:v 2 -vf scale=800:-1 -vframes 1 -strftime 1 "screenshot\%%H-%%M-%%S_%%d-%%m-%%Y_SNAPSHOT.jpg"  
+ffmpeg -ss 00:00:20 -i book.mp4 -qscale:v 2 -vf scale=800:-1 -vframes 1 -strftime 1 "screenshot\%%H-%%M-%%S_%%d-%%m-%%Y_SNAPSHOT.jpg"   
 
 
