@@ -1,0 +1,34 @@
+(for %i in (*.ts) do @echo file '%i') > mylist.txt
+ffmpeg -f concat -i mylist.txt -c copy all.ts
+ffmpeg -i all.ts -acodec copy -vcodec copy all.mp4
+
+
+
+
+@echo off
+echo getting ready . video will be there after 20 sec
+TIMEOUT /T 20
+(for %%i in (*.ts) do @echo file '%%i') > mylist.txt
+ffmpeg -f concat -i mylist.txt -c copy all.ts
+ffmpeg -i all.ts -acodec copy -vcodec copy all.mp4
+ffmpeg -i all.mp4 -i mylogo.jpeg -filter_complex "overlay=20:20" book.mp4
+ffmpeg -ss 00:00:20 -i book.mp4 -qscale:v 2 -vf scale=800:-1 -vframes 1 "screenshot\frame.jpg"
+
+
+
+
+
+@echo off
+echo getting ready . video will be there after 20 sec
+TIMEOUT /T 20
+(for %%i in (*.ts) do @echo file '%%i') > mylist.txt
+ffmpeg -f concat -i mylist.txt -c copy all.ts
+ffmpeg -i all.ts -acodec copy -vcodec copy all.mp4
+ffmpeg -i all.mp4 -i mylogo.jpeg -filter_complex "overlay=20:20" -preset ultrafast book.mp4
+ffmpeg -ss 00:00:20 -i book.mp4 -qscale:v 2 -vf scale=800:-1 -vframes 1 -strftime 1 "screenshot\%%H-%%M-%%S_%%d-%%m-%%Y_SNAPSHOT.jpg"
+
+
+
+gold gold gold
+
+ffmpeg -i rtsp://admin:gtech@88@192.168.199.22/doc/page/preview.asp -fflags flush_packets -max_delay 2 -flags -global_header -hls_time 1 -hls_list_size 1 -vcodec copy -y -strftime 1 -hls_flags second_level_segment_index -hls_segment_filename 'file-%H%M%S%Y%m%d-%%04d.ts' out.m3u8
